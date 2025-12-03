@@ -27,11 +27,11 @@ var app = builder.Build();
 
 app.UseCors("AllowAll");
 
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 
 app.MapGet("/", () => new { message = "ToDoList API is running!" });
 
@@ -118,4 +118,5 @@ app.MapDelete("/api/tasks/{id}", async (ToDoDbContext db, int id) =>
     }
 });
 
+app.MapGet("/",()=>"Route is not good");//????????????????????????????????????????
 app.Run();
