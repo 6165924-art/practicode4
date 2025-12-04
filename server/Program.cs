@@ -3,10 +3,16 @@ using TodoApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//builder.Services.AddDbContext<ToDoDbContext>(options =>
+//    options.UseMySql(
+//        builder.Configuration.GetConnectionString("ToDoDB"),
+//        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("ToDoDB"))
+//    )
+//);
 builder.Services.AddDbContext<ToDoDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("ToDoDB"),
-        ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("ToDoDB"))
+        new MySqlServerVersion(new Version(8, 0, 0))  // ✅ החלף את השורה הזו
     )
 );
 
